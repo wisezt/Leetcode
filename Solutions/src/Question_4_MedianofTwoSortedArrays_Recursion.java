@@ -20,51 +20,71 @@ public class Question_4_MedianofTwoSortedArrays_Recursion {
         boolean isArr1 = false;
 
 
-        double result = getMedianValue(count, medianIndex, isMedian, isArr1, nums1, nums2, 0, 0, theTotalLength);
+        double result = getMedianValue(count, medianIndex, isMedian, isArr1, nums1, nums2, 0, 0, theTotalLength, 0);
 
         return result;
     }
 
-    public static double getMedianValue(int count, double medianIndex, boolean isMedian, boolean isArr1, int[] nums1, int[] nums2, int index_1, int index_2, int theTotalLength) {
+    public static double getMedianValue(int count, double medianIndex, boolean isMedian, boolean isArr1, int[] nums1, int[] nums2, int index_1, int index_2, int theTotalLength, int currArrIndex) {
         if (medianIndex == count) isMedian = true;
-//        System.out.println("count: " + count + "  medianIndex: " + medianIndex + " isMedian: " + isMedian + " isArr1: " + isArr1 + " nums1: " + nums1[index_1] + " nums2: " + nums2[index_2] + " index_1: " + index_1 + "  index_2: " + index_2);
+        System.out.println("count: " + count + "  medianIndex: " + medianIndex + " isMedian: " + isMedian + " isArr1: " + isArr1 + " nums1: " + nums1[index_1] + " nums2: " + nums2[index_2] + " index_1: " + index_1 + "  index_2: " + index_2);
 
         if (isMedian) {
             if (isArr1) {
+
     //            System.out.println("nums1[index_1]: " + nums1[index_1]);
-                return getMedianValueByOE(isArr1, nums1, nums2, index_1, index_2, theTotalLength);
+                if (index_1 >= nums1.length) {
+                    currArrIndex = index_2;
+                    return getMedianValueByOE(isArr1, nums1, nums2, index_1, currArrIndex, theTotalLength);
+
+                }
+
+
+                return getMedianValueByOE(isArr1, nums1, nums2, currArrIndex, index_2, theTotalLength);
             } else {
                 System.out.println("nums2[index_2]: " + nums2[index_2]);
-                return getMedianValueByOE(isArr1, nums1, nums2, index_1, index_2, theTotalLength);
+
+                if (index_2 >= nums1.length) {
+                    currArrIndex = index_1;
+                    return getMedianValueByOE(isArr1, nums1, nums2, index_1, currArrIndex, theTotalLength);
+
+                }
+                return getMedianValueByOE(isArr1, nums1, nums2, index_1, currArrIndex, theTotalLength);
             }
         } else {
 
 
-            if (index_1 > nums1.length) {
+            if (index_1 >= nums1.length) {
                 count++;
                 index_2++;
                 isArr1 = false;
+                System.out.println("index_1 >= nums1.length");
 
-            } else if (index_2 > nums2.length) {
+            } else if (index_2 >= nums2.length) {
                 count++;
                 index_1++;
                 isArr1 = true;
+                System.out.println("index_2 >= nums2.length");
 
             } else if (nums1[index_1] < nums2[index_2]) {
                 count++;
+                currArrIndex = index_1;
                 index_1++;
                 isArr1 = true;
                 System.out.println("nums1[index_1]< nums2[index_2]");
 
             } else if (nums1[index_1] > nums2[index_2]) {
                 count++;
+                currArrIndex = index_2;
                 index_2++;
                 isArr1 = false;
                 System.out.println("index_1 > index_2");
 
 
             } else {
+                System.out.println("index_1 == index_2");
                 count++;
+                currArrIndex = index_1;
                 index_1++;
 
 
@@ -72,7 +92,7 @@ public class Question_4_MedianofTwoSortedArrays_Recursion {
             }
 
 
-            return getMedianValue(count, medianIndex, isMedian, isArr1, nums1, nums2, index_1, index_2, theTotalLength);
+            return getMedianValue(count, medianIndex, isMedian, isArr1, nums1, nums2, index_1, index_2, theTotalLength, currArrIndex);
 
         }
 

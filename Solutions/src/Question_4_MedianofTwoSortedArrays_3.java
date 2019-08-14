@@ -156,10 +156,6 @@ public class Question_4_MedianofTwoSortedArrays_3 {
                     medianIndexPlusValue = nums2[index2];
                 } else
 
-                if (index2 >= nums2L) {
-
-                    medianIndexPlusValue = nums1[index1];
-                } else
 
                 if (nums1[index1] <= nums2[index2]) {
                     medianIndexPlusValue = nums1[index1];
@@ -175,11 +171,6 @@ public class Question_4_MedianofTwoSortedArrays_3 {
                 medianIndexMinusValue = nums2[currentIndex];
 
 
-
-                if (index1 >= nums1L) {
-
-                    medianIndexPlusValue = nums2[index2];
-                } else
 
                 if (index2 >= nums2L) {
 

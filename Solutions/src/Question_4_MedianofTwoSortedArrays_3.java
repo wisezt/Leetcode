@@ -15,10 +15,9 @@ public class Question_4_MedianofTwoSortedArrays_3 {
         int theTotalLength = nums1.length + nums2.length;
         int index1=0, index2=0;
         int nums1L = nums1.length, nums2L = nums2.length;
-        double medianIndex = Math.floor((theTotalLength - 1) / 2);
-        boolean isMedian = false;
-        int count = 0;
-        boolean isArr1 = false, isArr2 = false;
+        double medianIndex;
+        int count;
+        boolean isArr1 = false;
         boolean isIndex1OutOfBorder = false;
         boolean isIndex2OutOfBorder = false;
 
@@ -93,11 +92,10 @@ public class Question_4_MedianofTwoSortedArrays_3 {
             //Even
 
             medianIndexMinus = (theTotalLength) / 2 - 1;
-            medianIndexPlus = theTotalLength/2;
 
 
             for (count = 0; count <= medianIndexMinus; count++) {
-                System.out.println("*********for: " + "index1:" + index1 + " index2: " + index2 + " CurrentIndex: " + currentIndex );
+
 
                 if (index1 >= nums1L) {
                     isIndex1OutOfBorder = true;
@@ -129,12 +127,9 @@ public class Question_4_MedianofTwoSortedArrays_3 {
                 for (int i = count; i < medianIndexMinus; i++) {
                     index2++;
                 }
-                System.out.println("*********for: " + "index1:" + index1 + " index2: " + index2 + " CurrentIndex: " + currentIndex );
+
                 medianIndexPlus = index2 + 1;
-                System.out.println("medianIndexPuls: " + medianIndexPlus);
-                System.out.println("nums2[index2]" + nums2[index2]);
-                System.out.println("nums2[medianIndexPlus]: " +nums2[medianIndexPlus]);
-                System.out.println("Before return:" + ((nums2[index2] + nums2[medianIndexPlus])/2.0));
+
 
 
                 return ((nums2[index2] + nums2[medianIndexPlus])/2.0);
@@ -157,12 +152,12 @@ public class Question_4_MedianofTwoSortedArrays_3 {
 
 
                 if (index1 >= nums1L) {
-                    isIndex1OutOfBorder = true;
+
                     medianIndexPlusValue = nums2[index2];
                 } else
 
                 if (index2 >= nums2L) {
-                    isIndex2OutOfBorder = true;
+
                     medianIndexPlusValue = nums1[index1];
                 } else
 
@@ -182,12 +177,12 @@ public class Question_4_MedianofTwoSortedArrays_3 {
 
 
                 if (index1 >= nums1L) {
-                    isIndex1OutOfBorder = true;
+
                     medianIndexPlusValue = nums2[index2];
                 } else
 
                 if (index2 >= nums2L) {
-                    isIndex2OutOfBorder = true;
+
                     medianIndexPlusValue = nums1[index1];
                 } else
 
@@ -224,7 +219,6 @@ public class Question_4_MedianofTwoSortedArrays_3 {
 
 
 
-//        return result;
     }
 
 }

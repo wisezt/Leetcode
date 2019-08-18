@@ -6,8 +6,8 @@ public class Question_6_ZigZag_Conversion {
 
     public static void main(String[] strings){
 
-        String str= "PAYPALISHIRING";
-        int num = 3;
+        String str= "oxjpkcpdekyazevyzxudsirvddoxmptaodryfhdltcmuijsigolaxevcimbwduwrzqrhxvssxgmhpgpxvdyujvwrhzpktmdvcvcbquvpbhwsposktsecncwxbljxznsdiugaqbprknmabekwwrzltxixiuwihonrkutaviuixgibkuxinythvcgewcofsbycxrctbydyelzqhzyvxsetwkzuonbgqziosmjvnmtrzvkiuidrcjkavlwjaxrrybhsqsndghwhegpyrvrvgcwcpsnqsfjqgqjykwbqfyzjeojxlbtsfpwujjkbqtuzldxxbznjxmuddedqhwioneiwqvygqufezdbacrlbfggkmjbvfjjsqtrgormhlulkxombfyengkxuwypdkyyarpiiiwptqcdnsrqypunxfkrdlggvggxaxhifdzyuddjvvcvkwikdvbggkpbqvyqvfaakzzgecsazuxmqgwwbxchhtkarkqmrrmbsnixsczrwwdoebkfzpoikyibkbpbuedmrnllpkfnjkbnmovnfjxpkitwjiydmdrgqdthpywyjzmvnhksshkepdbylbdaexiwabfrabqlaegqnskhzumpzpplqvnwsvsuwxlyabjchruujhclbqcbhtozobviypcwmoxoriqbanvluzyxpaawwovkrsvrhxotnnjhvcivpfjjfjgwkhtgxqsrjpiqnymclvlhxveobpxgzgclnxtmqndzdmrsmduybifadlpebomaurljoewerzfwnxoacjydrfeuqvbtjnteegnvmjbgljcygraicamvfspynsrwgnamvqjiblomuqlcjnkloygvsytfqneycglxwwfyhtkdmxhvlujbspwlnqsefwchdpezmmzvfkbtjirwcaxxpukfmcltznaefgdtsdqaprvacmxemubeoljcquvpjxvqeajwfcyutuvvgscv";
+        int num = 918;
 
         String result = convert(str,num);
 
@@ -24,13 +24,9 @@ public class Question_6_ZigZag_Conversion {
         int theLength = s.length();
         int theNumRows= numRows;
         List<List<Character>> theList = new ArrayList<>();
-        int y = theNumRows, x = (int)Math.floor(theLength/numRows);
-        int theGroupNum = (numRows*2) -2;
-        int theModule = theLength % ((numRows*2) -2);
-        int theNoModuleLength = theLength - theModule;
-        int theTotalGroup = (int)Math.floor((theLength / theGroupNum ));
 
-        int theIndex  = 0;
+
+
 
 
 
@@ -39,59 +35,63 @@ public class Question_6_ZigZag_Conversion {
             List<Character> theInnerList = new ArrayList<>();
             theList.add(theInnerList);
         }
-        System.out.println("theGroupNum: " + theGroupNum);
-        System.out.println("theTotalGroup: " + theTotalGroup );
-        System.out.println("theNumRows: " + theNumRows);
-
-
-        for (int i = 0 ; i < theTotalGroup ; i++){
-
-            System.out.println("theGroupNum: " + theGroupNum);
-            System.out.println("theTotalGroup: " + theTotalGroup );
-            System.out.println("theNumRows: " + theNumRows);
 
 
 
-            for (int j = 0 ; j < theNumRows ; j++){
-                theIndex = i + j;
-                System.out.println(s.charAt(theIndex) + " : " + theIndex + " i: " + i + " j: " +j   );
-                Character theChr = s.charAt(theIndex);
+
+        int i = 0;
+        while(i < theLength ){
+
+
+
+            for (int j = 0 ; j < theNumRows && i < theLength ; j++, i++){
+                System.out.println(s.charAt(i) + " i: " + i);
+                Character theChr = s.charAt(i);
                 theList.get(j).add(theChr);
 
             }
 
 
-            for (int j = 0; j < theNumRows - 2 ; j++){
-                theIndex = i + j + theNumRows;
-                Character theChr = s.charAt(theIndex);
-                System.out.println("theNumRows: " + theNumRows +  " j: " + j );
-
-                theList.get(theNumRows-j-1).add(theChr);
+            for (int j = theNumRows - 2 ; j > 0  && i < theLength ; j--, i++){
+                System.out.println(s.charAt(i) + " i: " + i);
+                Character theChr = s.charAt(i);
+                theList.get(j).add(theChr);
 
             }
 
 
+
+
+
+
         }
 
 
-        int count=0;
-        theIndex= theNoModuleLength - 1;
 
-        for (int i = theNoModuleLength - 1 ; i < theLength ; i++){
-            Character theChr = s.charAt(theIndex);
-            theList.get( theNumRows - count -1).add(theChr);
-            count++;
+
+
+
+        for (int h = 0 ; h < theNumRows ; h++){
+            int length = theList.get(h).size();
+            for (int j = 0 ; j < length ; j++){
+                System.out.print(theList.get(h).get(j));
+            }
+            System.out.println();
 
         }
+
+
+
 
         String string = "";
+        StringBuilder sb = new StringBuilder();
 
-        for (int i = 0 ; i < theNumRows ; i++){
+        for (int h = 0 ; h < theNumRows ; h++){
 
-            StringBuilder sb = new StringBuilder();
+
 
             // Appends characters one by one
-            for (Character ch : theList.get(i)) {
+            for (Character ch : theList.get(h)) {
                 sb.append(ch);
 
 

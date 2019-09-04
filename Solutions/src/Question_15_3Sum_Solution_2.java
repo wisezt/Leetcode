@@ -70,6 +70,7 @@ public class Question_15_3Sum_Solution_2 {
                         Collections.sort(tempList);
 
                         theSet.add(tempList);
+                        break;
 
                     }
 

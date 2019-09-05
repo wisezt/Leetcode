@@ -23,9 +23,21 @@ public class Question_15_3Sum_Solution_4 {
 
         //  System.out.println();
 
+        int leftIndex = nums.length - 2;
+
+        for (int z = 0 ; z < nums.length - 2 ; z++){
+
+            if (nums[z] >= 0 ){
+                leftIndex = z;
+            }
 
 
-        while (i < (nums.length - 2)){
+
+        }
+
+
+
+        while (i <= leftIndex){
 
 
 
@@ -72,11 +84,10 @@ public class Question_15_3Sum_Solution_4 {
 
             }
 
-            i++;
-
-            while ((nums[i] == nums[i - 1]) && nums[i] == nums[i +1] && (i <nums.length -2)){
+            do {
                 i++;
-            }
+
+            }while ((nums[i] == nums[i - 1]) && (i <nums.length -2));
 
 
         }

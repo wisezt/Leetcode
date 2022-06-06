@@ -28,113 +28,21 @@ class Solution03 {
                 sum = (int) entryI.getKey() + (int) entryj.getKey();
 
                 if (hashMap.containsKey(-sum)) {
-                    if (hasNoSameElements(-sum, (int) entryI.getKey(), (int) entryj.getKey(),hashMap)){
+                    if (hasNoSameElements(-sum, (int) entryI.getKey(), (int) entryj.getKey(), hashMap)) {
                         List<Integer> list = new ArrayList(List.of(-sum, entryI.getKey(), entryj.getKey()));
                         System.out.printf("(int)entryI.getKey(): %s\t(int)entryj.getKey(): %s\t-sum: %s\thashmap.get(%s): %s\n", (int) entryI.getKey(), (int) entryj.getKey(), -sum, -sum, hashMap.get(-sum));
 //                        System.out.printf(list);
                         Collections.sort(list);
                         tripletsSet.add(list);
                     }
-
-
                 }
-
-
             }
-
         }
 
 
-//        Set<List<Integer>> tripletsSet = new HashSet<>();
 //
-//
-//        int sum;
-//        for (int i = 0; i < nums.length - 1; i++) {
-//            for (int j = i + 1; j < nums.length; j++) {
-//                List<Integer> indexList = new ArrayList<>();
-//
-//                sum = nums[i] + nums[j];
-//                indexList.add(i);
-//                indexList.add(j);
-//                List<List<Integer>> list = new ArrayList<>();
-//
-//                if (hashMap.get(-sum) != null) {
-//                    list.addAll(hashMap.get(-sum));
-//                    list.add(indexList);
-//                } else {
-//                    list = List.of(indexList);
-//                }
-//
-//
-//                hashMap.put(-sum, list);
-//
-//
-//            }
-//
-//
-//        }
-//
-//
-//        for (int i = 0; i < nums.length; i++) {
-//            if (hashMap.containsKey(nums[i])) {
-//                for (List<Integer> list : hashMap.get(nums[i])) {
-//                    if (list.get(0) != i && list.get(1) != i) {
-//                        List<Integer> tripletsList = new ArrayList<>(List.of(nums[i], nums[list.get(0)], nums[list.get(1)]));
-//                        Collections.sort(tripletsList);
-//                        tripletsSet.add(tripletsList);
-//                    }
-//                }
-////                List<Integer> indexList = hashMap.get(nums[i]);
-//
-//
-//            }
-//        }
-
-
-//        for (int i = 0; i < nums.length; i++) {
-//
-//            if (hashMap.containsValue(nums[i])) {
-//
-//
-//                for (Map.Entry tmpEntry : hashMap.entrySet()) {
-//
-//                    if ((int) tmpEntry.getValue() == nums[i]) {
-//
-//                    }
-//
-//
-//                }
-//
-//            }
-//
-//        }
-
-
-//        Map<Integer,Integer> hashMap = new HashMap<>();
-
-
-//        for (Map.Entry tmp1: hashMap.entrySet()){
-//
-//            for (Map.Entry tmp2: hashMap.entrySet()) {
-//
-//                for (Map.Entry tmp3: hashMap.entrySet()) {
-//
-//                    if ((int)tmp1.getValue() + (int)tmp2.getValue() + (int)tmp3.getValue() == 0){
-//                        System.out.printf( tmp1.getValue() + " " + (int)tmp2.getValue() + " " + (int)tmp3.getValue());
-//                        hashMap.remove(tmp1.getKey());
-//                        hashMap.remove(tmp2.getKey());
-//                        hashMap.remove(tmp3.getKey());
-//                    }
-//
-//
-//                }
-//
-//            }
-//
-//
-//        }
-
         List<List<Integer>> result = new ArrayList<>(tripletsSet);
+//        Collections.sort(result);
 
 
         return result;

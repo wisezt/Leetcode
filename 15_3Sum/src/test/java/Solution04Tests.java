@@ -2,23 +2,22 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Solution03Tests {
+public class Solution04Tests {
 
-    Solution03 solution;
+    Solution04 solution;
 
     @BeforeEach
     void setupBeforeEach(){
-        solution = new Solution03();
+        solution = new Solution04();
     }
 
 
     @Test
     void test01() {
 
-        Solution03 solution = new Solution03();
+
         List<List<Integer>> result = solution.threeSum(new int[]{-1, 0, 1, 2, -1, -4});
 //        System.out.println(result);
 
@@ -39,7 +38,6 @@ public class Solution03Tests {
     @Test
     void test02() {
 
-        Solution03 solution = new Solution03();
         List<List<Integer>> result = solution.threeSum(new int[]{0, 0, 0});
 //        System.out.println(result);
 
@@ -60,7 +58,6 @@ public class Solution03Tests {
     @Test
     void test03() {
 
-        Solution03 solution = new Solution03();
         List<List<Integer>> result = solution.threeSum(new int[]{-1, 0, 1});
 //        System.out.println(result);
 
@@ -165,7 +162,21 @@ public class Solution03Tests {
     }
 
 
+    @Test
+    void test09() {
 
+
+        List<List<Integer>> result = solution.threeSum(new int[]{
+                -4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0});
+
+        List<List<Integer>> expct =  List.of( List.of(-5,1,4),List.of(-4,0,4),List.of(-4,1,3),List.of(-2,-2,4),List.of(-2,1,1),List.of(0,0,0));
+
+        System.out.println(result);
+
+        Assertions.assertIterableEquals(expct, result, "The result should be" + expct);
+
+
+    }
 
 
 }

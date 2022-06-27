@@ -24,6 +24,10 @@ public class Solution03 implements Solution {
                     return true;
                 }
 
+                if (maxIndex < i){
+                    return false;
+                }
+
                 if (tmpIndex > maxIndex){
                     maxIndex = tmpIndex;
                 }
